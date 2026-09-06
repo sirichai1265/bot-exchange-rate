@@ -7,8 +7,9 @@ Data feed   : the JSON endpoint that page calls in the background (no API key).
 
 Usage
 -----
-    python bot_exchange_rate.py                     # last 15 days, USD, -> thb_rates.txt
+    python bot_exchange_rate.py                     # last 15 days, USD & KRW, -> thb_rates.txt
     python bot_exchange_rate.py --currencies USD EUR JPY
+    python bot_exchange_rate.py --currencies KRW    # South Korean won only
     python bot_exchange_rate.py --start 2026-08-01 --end 2026-09-05
     python bot_exchange_rate.py --outfile C:\\data\\rates.txt
 
@@ -62,8 +63,8 @@ def load_existing_keys(path: str) -> set[tuple[str, str]]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--currencies", nargs="+", default=["USD"],
-                        help="currency codes to fetch (default: USD)")
+    parser.add_argument("--currencies", nargs="+", default=["USD", "KRW"],
+                        help="currency codes to fetch (default: USD KRW)")
     parser.add_argument("--start", help="start date YYYY-MM-DD (default: 15 days ago)")
     parser.add_argument("--end", help="end date YYYY-MM-DD (default: today)")
     parser.add_argument("--outfile", default="thb_rates.txt",
