@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Generated rate data (remove these lines if you want to track history in git)
+thb_rates.txt
+rates.txt
